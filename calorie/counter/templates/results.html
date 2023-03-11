@@ -13,10 +13,16 @@
             width:100%
         }
     </style>
+    
 </head>
 <body>
     <nav></nav>
     <main>
+        {% if name %}
+        <h1>Hello {{ name }}</h1>
+        {% else %}
+        <h1>Hello User</h1>
+        {% endif %}
         <table>
             <tr>
                 <th>Name</th>
