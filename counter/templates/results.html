@@ -8,9 +8,8 @@
     <style>
         table, th, td{
             border:1px solid black;
-        }
-        table {
-            width:100%
+            width: fit-content;
+            padding: 5px;
         }
     </style>
     
@@ -23,41 +22,38 @@
         {% else %}
         <h1>Hello User</h1>
         {% endif %}
+        {% for day in history%}
         <table>
+            <h2>{{day.date}}:</h2>
             <tr>
                 <th>Name</th>
+                <th>Servings</th>
                 <th>Calories</th>
                 <th>Protein</th>
                 <th>Carbs</th>
                 <th>Fat</th>
-                <th>Quantity</th>
             </tr>
+            {% for food in day.meals%}
             <tr>
-                <th>Apple</th>
-                <th>130</th>
-                <th>1g</th>
-                <th>34g</th>
-                <th>0g</th>
-                <th>1</th>
+                <th>{{food.data.name}}</th>
+                <th>{{food.servings}}</th>
+                <th>{{food.data.calories}}</th>
+                <th>{{food.data.protein}}</th>
+                <th>{{food.data.carbs}}</th>
+                <th>{{food.data.fat}}</th>
             </tr>
-            <tr>
-                <th>Egg</th>
-                <th>140</th>
-                <th>12g</th>
-                <th>2g</th>
-                <th>10g</th>
-                <th>2</th>
-            </tr>
+            {% endfor %}
             <tr></tr>
             <tr>
                 <th>Total:</th>
-                <th>270</th>
+                <th>3</th>
+                <th>{{day.total.calories}}</th>
                 <th>13g</th>
                 <th>36g</th>
                 <th>10g</th>
-                <th>3</th>
             </tr>
         </table>
+        {% endfor %}
     </main>
     <footer></footer>
 </body>
